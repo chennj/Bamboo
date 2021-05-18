@@ -1,0 +1,12 @@
+[submodule "Bamboo/vendor/spdlog"]
+	path = Bamboo/vendor/spdlog
+	url = https://github.com/gabime/spdlog.git
+[submodule "Bamboo/vendor/glfw"]
+	path = Bamboo/vendor/glfw
+	url = https://github.com/TheCherno/glfw.git
+[submodule "Bamboo/vendor/imgui"]
+	path = Bamboo/vendor/imgui
+	url = https://github.com/TheCherno/imgui.git
+[submodule "Bamboo/vendor/glm"]
+	path = Bamboo/vendor/glm
+	url = https://github.com/g-truc/glm.git
