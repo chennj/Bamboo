@@ -56,32 +56,33 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>..\bin\Debug-windows-x86_64\Bamboo\</OutDir>
-    <IntDir>..\tmp\Debug-windows-x86_64\Bamboo\</IntDir>
+    <IntDir>..\temp\Debug-windows-x86_64\Bamboo\</IntDir>
     <TargetName>Bamboo</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\bin\Release-windows-x86_64\Bamboo\</OutDir>
-    <IntDir>..\tmp\Release-windows-x86_64\Bamboo\</IntDir>
+    <IntDir>..\temp\Release-windows-x86_64\Bamboo\</IntDir>
     <TargetName>Bamboo</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <OutDir>..\bin\Dist-windows-x86_64\Bamboo\</OutDir>
-    <IntDir>..\tmp\Dist-windows-x86_64\Bamboo\</IntDir>
+    <IntDir>..\temp\Dist-windows-x86_64\Bamboo\</IntDir>
     <TargetName>Bamboo</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Base.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>BB_PLATFORM_WINDOWS;BB_BUILD_DLL;BAMBOO_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;BB_PLATFORM_WINDOWS;BB_BUILD_DLL;BAMBOO_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\glfw\include;vendor\glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalOptions>/MTd %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -97,9 +98,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Base.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>BB_PLATFORM_WINDOWS;BB_BUILD_DLL;BAMBOO_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;BB_PLATFORM_WINDOWS;BB_BUILD_DLL;BAMBOO_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\glfw\include;vendor\glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -107,7 +109,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MT %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -124,9 +126,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Base.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>BB_PLATFORM_WINDOWS;BB_BUILD_DLL;BAMBOO_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;BB_PLATFORM_WINDOWS;BB_BUILD_DLL;BAMBOO_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\glfw\include;vendor\glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -134,7 +137,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MT %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -150,6 +153,51 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Bamboo.h" />
+    <ClInclude Include="src\Base.h" />
+    <ClInclude Include="src\bamboo\core\Application.h" />
+    <ClInclude Include="src\bamboo\core\Core.h" />
+    <ClInclude Include="src\bamboo\core\EntryPoint.h" />
+    <ClInclude Include="src\bamboo\core\Input.h" />
+    <ClInclude Include="src\bamboo\core\KeyCodes.h" />
+    <ClInclude Include="src\bamboo\core\Layer.h" />
+    <ClInclude Include="src\bamboo\core\LayerStack.h" />
+    <ClInclude Include="src\bamboo\core\Log.h" />
+    <ClInclude Include="src\bamboo\core\MouseButtonCodes.h" />
+    <ClInclude Include="src\bamboo\core\Timestep.h" />
+    <ClInclude Include="src\bamboo\core\Window.h" />
+    <ClInclude Include="src\bamboo\debug\Instrumentor.h" />
+    <ClInclude Include="src\bamboo\events\ApplicationEvent.h" />
+    <ClInclude Include="src\bamboo\events\Event.h" />
+    <ClInclude Include="src\bamboo\events\KeyEvent.h" />
+    <ClInclude Include="src\bamboo\events\MouseEvent.h" />
+    <ClInclude Include="src\bamboo\imgui\ImGuiLayer.h" />
+    <ClInclude Include="src\bamboo\renderer\Buffer.h" />
+    <ClInclude Include="src\bamboo\renderer\Camera.h" />
+    <ClInclude Include="src\bamboo\renderer\FrameBuffer.h" />
+    <ClInclude Include="src\bamboo\renderer\GraphicsContext.h" />
+    <ClInclude Include="src\bamboo\renderer\RenderCommand.h" />
+    <ClInclude Include="src\bamboo\renderer\Renderer.h" />
+    <ClInclude Include="src\bamboo\renderer\Renderer2D.h" />
+    <ClInclude Include="src\bamboo\renderer\RendererAPI.h" />
+    <ClInclude Include="src\bamboo\renderer\Shader.h" />
+    <ClInclude Include="src\bamboo\renderer\SubTexture2D.h" />
+    <ClInclude Include="src\bamboo\renderer\Texture.h" />
+    <ClInclude Include="src\bamboo\renderer\VertexArray.h" />
+    <ClInclude Include="src\bamboo\scene\Components.h" />
+    <ClInclude Include="src\bamboo\scene\Entity.h" />
+    <ClInclude Include="src\bamboo\scene\Scene.h" />
+    <ClInclude Include="src\bamboo\scene\SceneCamera.h" />
+    <ClInclude Include="src\bamboo\scene\ScriptableEntity.h" />
+    <ClInclude Include="src\platform\opengl\OpenGLBuffer.h" />
+    <ClInclude Include="src\platform\opengl\OpenGLContext.h" />
+    <ClInclude Include="src\platform\opengl\OpenGLDebug.h" />
+    <ClInclude Include="src\platform\opengl\OpenGLFrameBuffer.h" />
+    <ClInclude Include="src\platform\opengl\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\platform\opengl\OpenGLShader.h" />
+    <ClInclude Include="src\platform\opengl\OpenGLTexture.h" />
+    <ClInclude Include="src\platform\opengl\OpenGLVertexArray.h" />
+    <ClInclude Include="src\platform\windows\WindowsWindow.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_fixes.hpp" />
@@ -568,6 +616,38 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\bamboo\core\Application.cpp" />
+    <ClCompile Include="src\bamboo\core\Layer.cpp" />
+    <ClCompile Include="src\bamboo\core\LayerStack.cpp" />
+    <ClCompile Include="src\bamboo\core\Log.cpp" />
+    <ClCompile Include="src\bamboo\imgui\ImGuiBuild.cpp" />
+    <ClCompile Include="src\bamboo\imgui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\bamboo\renderer\Buffer.cpp" />
+    <ClCompile Include="src\bamboo\renderer\FrameBuffer.cpp" />
+    <ClCompile Include="src\bamboo\renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\bamboo\renderer\Renderer.cpp" />
+    <ClCompile Include="src\bamboo\renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\bamboo\renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\bamboo\renderer\Shader.cpp" />
+    <ClCompile Include="src\bamboo\renderer\SubTexture2D.cpp" />
+    <ClCompile Include="src\bamboo\renderer\Texture.cpp" />
+    <ClCompile Include="src\bamboo\renderer\VertexArray.cpp" />
+    <ClCompile Include="src\bamboo\scene\Entity.cpp" />
+    <ClCompile Include="src\bamboo\scene\Scene.cpp" />
+    <ClCompile Include="src\bamboo\scene\SceneCamera.cpp" />
+    <ClCompile Include="src\bbpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\platform\opengl\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\platform\opengl\OpenGLContext.cpp" />
+    <ClCompile Include="src\platform\opengl\OpenGLDebug.cpp" />
+    <ClCompile Include="src\platform\opengl\OpenGLFrameBuffer.cpp" />
+    <ClCompile Include="src\platform\opengl\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\platform\opengl\OpenGLShader.cpp" />
+    <ClCompile Include="src\platform\opengl\OpenGLTexture.cpp" />
+    <ClCompile Include="src\platform\opengl\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\platform\windows\WindowsInpu.cpp" />
+    <ClCompile Include="src\platform\windows\WindowsWindow.cpp" />
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
